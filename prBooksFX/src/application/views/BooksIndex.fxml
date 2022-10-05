@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BooksIndexController">
+   <center>
+      <TableView fx:id="tableBooks" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn fx:id="id" prefWidth="95.19994974136353" text="ID" />
+          <TableColumn fx:id="title" prefWidth="198.40003204345703" text="Título" />
+          <TableColumn fx:id="author" minWidth="0.0" prefWidth="192.80010986328125" text="Autor" />
+        </columns>
+         <BorderPane.margin>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+   <top>
+      <Label text="Listado de libros" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="50.0" />
+         </BorderPane.margin>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>
