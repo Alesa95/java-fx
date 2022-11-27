@@ -29,16 +29,18 @@ public class IndexController {
 	private ChoiceBox <String> cbNacionalidad;
 	@FXML
 	private Button btnAnadir;
+	@FXML
+	private Button btnBorrar;
 	/*	Tenemos que indicar que la TableView va a estar llena de objetos de la clase Usuario
-	 *  Esto lo hacemos añadiendo <Usuario> detrás de TableView. Esto se conoce como 
-	 *  "parametrización"
+	 *  Esto lo hacemos aï¿½adiendo <Usuario> detrï¿½s de TableView. Esto se conoce como 
+	 *  "parametrizaciï¿½n"
 	 */
 	@FXML
 	private TableView <Usuario> tablaUsuarios;
 	@FXML
 	/*
 	 * Para cada columa tenemos que indicar asimismo que tendremos un campo de la clase Usuario
-	 * que además será de un tipo determinado
+	 * que ademï¿½s serï¿½ de un tipo determinado
 	 */
 	private TableColumn <Usuario, String> nombre;
 	@FXML
@@ -49,18 +51,18 @@ public class IndexController {
 	/*
 	 * Para rellenar los datos del choice box tenemos que crear primero un ArrayList,
 	 * y luego pasarle ese ArrayList a una ObservableList, que es un objeto que puede
-	 * ser interpretado en la interfaz gráfica por JavaFX
+	 * ser interpretado en la interfaz grï¿½fica por JavaFX
 	 */
 	/*ArrayList<String> nacionalidades = new ArrayList<>(
-	    	Arrays.asList("Española", "Francesa", "Alemana", "Británica"));
+	    	Arrays.asList("Espaï¿½ola", "Francesa", "Alemana", "Britï¿½nica"));
 	ObservableList<String> lista_nacionalidades = 
 			FXCollections.observableArrayList(nacionalidades);
 	*/
 	private ObservableList<String> lista_nacionalidades = FXCollections.observableArrayList(
-            "Española",
+            "EspaÃ±ola",
             "Francesa",
             "Alemana",
-            "Británica"
+            "Britï¿½nica"
 	);
 	// Event Listener on Button[#btnAnadir].onAction
 	@FXML
@@ -79,16 +81,26 @@ public class IndexController {
 		cbNacionalidad.getSelectionModel().clearSelection();
 	}
 	
+	/**
+	 * Elimina el usuario seleccionado
+	 */
+	@FXML
+	private void borrarUsuario() {
+	    int selectedIndex = tablaUsuarios.getSelectionModel().getSelectedIndex();
+	    tablaUsuarios.getItems().remove(selectedIndex);
+	    System.out.println("Usuario borrado");
+	}
+	
 	/*
-	 * En el método initialice realizamos toda la lógica que queremos que se ejecute en el 
-	 * momento de lanzar la aplicación. En nuestro caso, queremos que la tabla esté ya llena
-	 * con todos los datos que teníamos predefinidos y además queremos llenar el choiceBox que
+	 * En el mÃ©todo initialice realizamos toda la lÃ³gica que queremos que se ejecute en el 
+	 * momento de lanzar la aplicacion. En nuestro caso, queremos que la tabla esta ya llena
+	 * con todos los datos que teniamos predefinidos y ademï¿½s queremos llenar el choiceBox que
 	 * hemos creado con las opciones que hemos definido en la ObservableList que hemos creado 
 	 * antes
 	 * 
-	 * El método setCellValueFactory nos permite indicar qué campo del objeto Usuario va a ir en
-	 * cada columna de la tabla, mientras que con setItems añadimos los objetos de la clase usuario
-	 * que hemos creado. Estos objetos están creados más abajo en el código
+	 * El mï¿½todo setCellValueFactory nos permite indicar quï¿½ campo del objeto Usuario va a ir en
+	 * cada columna de la tabla, mientras que con setItems aï¿½adimos los objetos de la clase usuario
+	 * que hemos creado. Estos objetos estan creados mas abajo en el codigo
 	 */
 	@FXML
     private void initialize() {
@@ -102,11 +114,12 @@ public class IndexController {
     }
 	
 	/*
-	 * Aquí creamos la lista de usuarios inicial, de nuevo mediante una ObservableList que puede
+	 * Aquï¿½ creamos la lista de usuarios inicial, de nuevo mediante una ObservableList que puede
 	 * ser interpretada en la interfaz de usuario por JavaFX
 	 */
 	private ObservableList<Usuario> usuarios = FXCollections.observableArrayList(
             new Usuario("Eren Yaeger", 19, "Alemana"),
-            new Usuario("Mikasa Ackerman", 18, "Española")
+            new Usuario("Mikasa Ackerman", 18, "Espaï¿½ola")
 	);
+	
 }
