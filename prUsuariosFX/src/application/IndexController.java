@@ -1,10 +1,11 @@
 package application;
 
 import javafx.fxml.FXML;
-
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class IndexController {
             "Española",
             "Francesa",
             "Alemana",
-            "Brit�nica"
+            "Británica"
 	);
 	// Event Listener on Button[#btnAnadir].onAction
 	@FXML
@@ -86,9 +87,19 @@ public class IndexController {
 	 */
 	@FXML
 	private void borrarUsuario() {
+		
 	    int selectedIndex = tablaUsuarios.getSelectionModel().getSelectedIndex();
-	    tablaUsuarios.getItems().remove(selectedIndex);
-	    System.out.println("Usuario borrado");
+        if (selectedIndex >= 0) {
+        	//	Si se ha seleccionado un elemento de la tabla, entramos aquí
+        	tablaUsuarios.getItems().remove(selectedIndex);
+        } else {
+            //	Si no se ha seleccionado nada, entramos aquí
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+            alert.showAndWait();
+        }
 	}
 	
 	/*
@@ -119,7 +130,7 @@ public class IndexController {
 	 */
 	private ObservableList<Usuario> usuarios = FXCollections.observableArrayList(
             new Usuario("Eren Yaeger", 19, "Alemana"),
-            new Usuario("Mikasa Ackerman", 18, "Espa�ola")
+            new Usuario("Mikasa Ackerman", 18, "Española")
 	);
 	
 }
